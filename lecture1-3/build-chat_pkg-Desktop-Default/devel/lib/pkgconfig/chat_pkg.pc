@@ -1,8 +1,0 @@
-prefix=/home/huicanlin/catkin_ws/src/ros_tutorial/lecture1-3/build-chat_pkg-Desktop-Default/devel
-
-Name: chat_pkg
-Description: Description of chat_pkg
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/huicanlin/catkin_ws/src/ros_tutorial/lecture1-3/build-chat_pkg-Desktop-Default/devel/lib 
-Requires: 
