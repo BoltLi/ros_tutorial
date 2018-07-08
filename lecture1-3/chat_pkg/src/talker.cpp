@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     ros::NodeHandle node;
     ros::Publisher chatter_pub = node.advertise<std_msgs::String>("chatter", 1000);
     ros::Rate loop_rate(10);
- 
+
     int count = 0;
     while (ros::ok()) // Keep spinning loop until user presses Ctrl+C
     {
@@ -17,9 +17,9 @@ int main(int argc, char **argv)
 
         std::stringstream ss;
         ss << "hello world " << count;
-        msg.data = ss.str(); 
+        msg.data = ss.str();
         ROS_INFO("%s", msg.data.c_str());
- 
+
         chatter_pub.publish(msg);
 
         ros::spinOnce(); // Need to call this function often to allow ROS to process incoming messages
