@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/huicanlin/catkin_ws/src/ros_tutorial/lecture1-3/build-chat_pkg-Desktop-Default/devel/setup.sh
