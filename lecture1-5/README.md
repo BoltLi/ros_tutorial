@@ -1,22 +1,18 @@
 ## ROS教程——1.5 基于ROS的地图构建
 
-[TOC]
-
-
-
 ### 1.5.1 引言
 
 为什么需要构建地图？
 
 构建地图是移动机器人的基本问题之一，地图使得机器人能够高效地执行定位、路径规划和活动规划(activity planning)等等任务；存在不同的方法来创建环境地图，如单元分解方法、占有网格图等。单元分解方法（Cellular Decomposition），为路径规划分解可用空间，可分为精确分解和近似分解，前者完全覆盖自由空间，例如梯形分解、草地图；后者表示导航所需的部分空闲空间，例如网格地图、四叉树和Voronoi图。
 
-![img](.\images\clip_image001.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image001.png)
 
 <center>图1  单元分解方法</center>
 
 占有网格图（Occupancy Grid Map, OGM），将环境映射为单元网格，通常单元大小为5厘米到50厘米不等；以概率的形式表示每个单元的占据情况；以-1表示某个单元的占据状态未知，未知区域通常指机器人传感器未能探测到的区域。如图2所示，白色像素表示该区域没有被占据，黑色像素表示该区域被占据，灰色像素表示该区域占据状态未知。
 
-![clip_image004](.\images\clip_image003.png)
+![clip_image004](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image003.png)
 
 <center>图2  占有网格图</center>
 
@@ -43,7 +39,7 @@ free_thresh: 0.196
 
 由于将地图保存为图像文件，我们可以用喜欢的图像编辑器进行编辑；因此，我们能够编辑根据传感器数据创建的任何地图，包括删除不应存在的内容、添加虚假障碍物以影响路径规划等。例如，在不希望机器人通过的走廊上画一条线，能够阻止机器人规划路径通过地图的某些区域，如图3所示。
 
-![img](.\images\clip_image005.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image005.png)
 
 <center>图3  编辑Map文件</center>
 
@@ -53,7 +49,7 @@ free_thresh: 0.196
 
 早期的典型工作FastSLAM基于粒子滤波器，将概率分布表示为占据状态空间的一组离散粒子，主要步骤：从随机分布的粒子开始，将粒子的预测值与实测值进行比较，根据状态估计与测量值的一致程度，为每个粒子分配一个权重，根据权重创建新分布，从先前分布中随机绘制粒子。
 
-![img](.\images\clip_image007.gif)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image007.gif)
 
 <center>图4  粒子滤波器</center>
 
@@ -88,7 +84,7 @@ roslaunch turtlebot_gazebo turtlebot_world.launch
 rosrun gmapping slam_gmapping
 ```
 
-![img](.\images\run_gmapping.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/run_gmapping.png)
 
 通过如下命令移动Gazebo中的机器人：
 
@@ -118,7 +114,7 @@ rviz 是一款ROS的3D可视化工具，可让我们从机器人的角度看世�
 rosrun rviz rviz
 ```
 
-![img](.\images\clip_image014.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image014.png)
 
 <center>图5 rviz空白视图</center>
 
@@ -161,13 +157,13 @@ sudo apt install ros-kinetic-turtlebot-rviz-launchers
 roslaunch turtlebot_rviz_launchers view_robot.launch
 ```
 
-![rviz with TurtleBot](.\images\clip_image016.png)
+![rviz with TurtleBot](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image016.png)
 
 <center>图6  rviz with TurtleBot</center>
 
 添加地图显示，将主题设置为/map，在rviz中能够看到地图构建进度，见图7。
 
-![img](.\images\MapDisplay.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapDisplay.png)
 
 <center>图7 构建地图进度</center>
 
@@ -211,7 +207,7 @@ $ rosrun rviz rviz -d my_config.rviz
 </launch>
 ```
 
-![img](.\images\clip_image020.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image020.png)
 
 <center>图8 rviz加载以后地图</center>
 
@@ -233,7 +229,7 @@ $ rosrun rviz rviz -d my_config.rviz
 </launch>
 ```
 
-![img](.\images\clip_image022.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image022.png)
 
 <center>图9 显示机器人位置</center>
 
@@ -241,7 +237,7 @@ $ rosrun rviz rviz -d my_config.rviz
 
 服务只是同步远程过程调用，它们允许一个节点调用在另一个节点中执行的函数。我们定义此函数的输入和输出与我们定义新消息类型的方式类似，服务器（提供服务）指定处理服务请求的回调，并发布该服务；客户端（调用服务）通过本地代理访问此服务，见图10。
 
-![Image result for ros services](.\images\clip_image024.png)
+![Image result for ros services](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image024.png)
 
 <center>图10  ROS服务请求与相应</center>
 
@@ -279,7 +275,7 @@ rosrun map_server map_saver [-f mapname]
 
 map_server在当前目录生成2个文件：map.pgm——地图本身，map.yaml ——地图的元数据，见图11。
 
-![img](./images/MapSaver2.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapSaver2.png)
 
 <center>图11 使用map_server保存地图</center>
 
@@ -289,7 +285,7 @@ map_server在当前目录生成2个文件：map.pgm——地图本身，map.yaml
 eog map.pgm
 ```
 
-![img](./images/viewSavedMap.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/viewSavedMap.png)
 
 <center>图12 查看地图文件</center>
 
@@ -419,7 +415,7 @@ void printGridToFile() {
 
 （4）载入地图
 
-![img](.\images\clip_image026.png)
+![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image026.png)
 
 <center>图13  载入地图</center>
 
