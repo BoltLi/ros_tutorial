@@ -10,10 +10,10 @@
 <div align=center>图1  单元分解方法</div>
 
 占有网格图（Occupancy Grid Map, OGM），将环境映射为单元网格，通常单元大小为5厘米到50厘米不等；以概率的形式表示每个单元的占据情况；以-1表示某个单元的占据状态未知，未知区域通常指机器人传感器未能探测到的区域。如图2所示，白色像素表示该区域没有被占据，黑色像素表示该区域被占据，灰色像素表示该区域占据状态未知。
-
+<div align=center><img width="480" alt="图2  占有网格图"src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image003.png"/></div>
 ![clip_image004](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image003.png)
 
-<center>图2  占有网格图</center>
+<div align=center>图2  占有网格图</div>
 
 占有网格图的优点是表示方便、处理速度快，缺点是不精确、浪费空间，所谓不精确是指如果一个物体落入网格单元的一部分，则整个单元被标记为占用。
 
