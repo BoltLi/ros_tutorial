@@ -11,8 +11,6 @@
 
 占有网格图（Occupancy Grid Map, OGM），将环境映射为单元网格，通常单元大小为5厘米到50厘米不等；以概率的形式表示每个单元的占据情况；以-1表示某个单元的占据状态未知，未知区域通常指机器人传感器未能探测到的区域。如图2所示，白色像素表示该区域没有被占据，黑色像素表示该区域被占据，灰色像素表示该区域占据状态未知。
 <div align=center><img width="480" alt="图2  占有网格图"src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image003.png"/></div>
-![clip_image004](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image003.png)
-
 <div align=center>图2  占有网格图</div>
 
 占有网格图的优点是表示方便、处理速度快，缺点是不精确、浪费空间，所谓不精确是指如果一个物体落入网格单元的一部分，则整个单元被标记为占用。
@@ -38,9 +36,9 @@ free_thresh: 0.196
 
 由于将地图保存为图像文件，我们可以用喜欢的图像编辑器进行编辑；因此，我们能够编辑根据传感器数据创建的任何地图，包括删除不应存在的内容、添加虚假障碍物以影响路径规划等。例如，在不希望机器人通过的走廊上画一条线，能够阻止机器人规划路径通过地图的某些区域，如图3所示。
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image005.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image005.png"/></div>
 
-<center>图3  编辑Map文件</center>
+<div align=center>图3  编辑Map文件</div>
 
 （3）FastSLAM
 
@@ -48,9 +46,9 @@ free_thresh: 0.196
 
 早期的典型工作FastSLAM基于粒子滤波器，将概率分布表示为占据状态空间的一组离散粒子，主要步骤：从随机分布的粒子开始，将粒子的预测值与实测值进行比较，根据状态估计与测量值的一致程度，为每个粒子分配一个权重，根据权重创建新分布，从先前分布中随机绘制粒子。
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image007.gif)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image007.gif"/></div>
 
-<center>图4  粒子滤波器</center>
+<div align=center>图4  粒子滤波器</div>
 
 （4）gmapping
 
@@ -83,7 +81,7 @@ roslaunch turtlebot_gazebo turtlebot_world.launch
 rosrun gmapping slam_gmapping
 ```
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/run_gmapping.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/run_gmapping.png"/></div>
 
 通过如下命令移动Gazebo中的机器人：
 
@@ -113,15 +111,15 @@ rviz 是一款ROS的3D可视化工具，可让我们从机器人的角度看世�
 rosrun rviz rviz
 ```
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image014.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image014.png"/></div>
 
-<center>图5 rviz空白视图</center>
+<div align=center>图5 rviz空白视图</div>
 
 rviz常用操作命令，使用鼠标右键或滚轮放大或缩小，使用鼠标左键平移（shift-单击）或旋转（单击）。
 
 第一次打开rviz时，我们将看到一个空的3D视图，见图5。左侧是“Displays”区域，包含世界中显示在中间的不同元素的列表，在“Displays”区域下方的“Add”按钮，用于添加更多元素。
 
- <center>表1  常用元素</center>
+<div align=center>表1  常用元素</div>
 
 | **Display name**   | **Description**                                              | **Messages Used**                                            |
 | ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -156,15 +154,15 @@ sudo apt install ros-kinetic-turtlebot-rviz-launchers
 roslaunch turtlebot_rviz_launchers view_robot.launch
 ```
 
-![rviz with TurtleBot](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image016.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image016.png"/></div>
 
-<center>图6  rviz with TurtleBot</center>
+<div align=center>图6  rviz with TurtleBot</div>
 
 添加地图显示，将主题设置为/map，在rviz中能够看到地图构建进度，见图7。
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapDisplay.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapDisplay.png"/></div>
 
-<center>图7 构建地图进度</center>
+<div align=center>图7 构建地图进度</div>
 
 （3）加载和保存配置
 
@@ -206,9 +204,9 @@ $ rosrun rviz rviz -d my_config.rviz
 </launch>
 ```
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image020.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image020.png"/></div>
 
-<center>图8 rviz加载以后地图</center>
+<div align=center>图8 rviz加载以后地图</div>
 
 注意，机器人不知道它在地图中的位置，导致rviz未能正确显示其位置；在下一教程中，我们将学习如何向机器人提供此信息；为了解决这个问题，我们将从/map添加一个静态变换到/odom（在下一教程解释），如图9所示。
 
@@ -228,17 +226,17 @@ $ rosrun rviz rviz -d my_config.rviz
 </launch>
 ```
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image022.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image022.png"/></div>
 
-<center>图9 显示机器人位置</center>
+<div align=center>图9 显示机器人位置</div>
 
 ### 1.5.4 ROS 服务
 
 服务只是同步远程过程调用，它们允许一个节点调用在另一个节点中执行的函数。我们定义此函数的输入和输出与我们定义新消息类型的方式类似，服务器（提供服务）指定处理服务请求的回调，并发布该服务；客户端（调用服务）通过本地代理访问此服务，见图10。
 
-![Image result for ros services](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image024.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image024.png"/></div>
 
-<center>图10  ROS服务请求与相应</center>
+<div align=center>图10  ROS服务请求与相应</div>
 
 （1）使用服务
 
@@ -274,9 +272,9 @@ rosrun map_server map_saver [-f mapname]
 
 map_server在当前目录生成2个文件：map.pgm——地图本身，map.yaml ——地图的元数据，见图11。
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapSaver2.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/MapSaver2.png"/></div>
 
-<center>图11 使用map_server保存地图</center>
+<div align=center>图11 使用map_server保存地图</div>
 
 使用Ubuntu默认图像查看程序（eog）打开.pgm文件：
 
@@ -284,9 +282,9 @@ map_server在当前目录生成2个文件：map.pgm——地图本身，map.yaml
 eog map.pgm
 ```
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/viewSavedMap.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/viewSavedMap.png"/></div>
 
-<center>图12 查看地图文件</center>
+<div align=center>图12 查看地图文件</div>
 
 接下来，我们学习如何通过代码将地图加载到内存，用于规划机器人的运动路径。为此，我们将使用map_server节点提供的名为static_map的ROS服务。
 
@@ -414,9 +412,9 @@ void printGridToFile() {
 
 （4）载入地图
 
-![img](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image026.png)
+<div align=center><img width="480" src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image026.png"/></div>
 
-<center>图13  载入地图</center>
+<div align=center>图13  载入地图</div>
 
 ### 练习题
 
