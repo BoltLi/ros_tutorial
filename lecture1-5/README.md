@@ -5,9 +5,9 @@
 为什么需要构建地图？
 
 构建地图是移动机器人的基本问题之一，地图使得机器人能够高效地执行定位、路径规划和活动规划(activity planning)等等任务；存在不同的方法来创建环境地图，如单元分解方法、占有网格图等。单元分解方法（Cellular Decomposition），为路径规划分解可用空间，可分为精确分解和近似分解，前者完全覆盖自由空间，例如梯形分解、草地图；后者表示导航所需的部分空闲空间，例如网格地图、四叉树和Voronoi图。
-<div align=center><img width="150" height="150" alt="图1  单元分解方法"src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image001.png"/></div>
+<div align=center><img width="480" alt="图1  单元分解方法"src="https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-5/images/clip_image001.png"/></div>
 
-<center>图1  单元分解方法</center>
+<div align=center>图1  单元分解方法</div>
 
 占有网格图（Occupancy Grid Map, OGM），将环境映射为单元网格，通常单元大小为5厘米到50厘米不等；以概率的形式表示每个单元的占据情况；以-1表示某个单元的占据状态未知，未知区域通常指机器人传感器未能探测到的区域。如图2所示，白色像素表示该区域没有被占据，黑色像素表示该区域被占据，灰色像素表示该区域占据状态未知。
 
