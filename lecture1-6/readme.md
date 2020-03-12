@@ -12,27 +12,27 @@
 
 **TF变换树**。TF在坐标系之间构建变换树，支持多个非连接树，仅在同一树中变换有效，见图1。
 
-![1_TransformTree](./images/1_TransformTree.png)
+<div align=center><img width="640" src="./images/1_TransformTree.png"/></div>
+<div align=center>图1 Transform Tree</div>
 
-<center>图1 Transform Tree</center>
 **变换树示例**。如图2-图3，即为Nao机器人的TF变换树。
 
-![2_TransformTreeExample1](./images/2_TransformTreeExample1.png)
+<div align=center><img width="640" src="./images/2_TransformTreeExample1.png"/></div>
+<div align=center>图2 Nao机器人及其坐标系</div>
 
-<center>图2 Nao机器人及其坐标系</center>
-![2_TransformTreeExample2](./images/3_TransformTreeExample2.png)
+<div align=center><img width="640" src="./images/3_TransformTreeExample2.png"/></div>
+<div align=center>图3 Nao机器人的变换树</div>
 
-<center>图3 Nao机器人的变换树</center>
 ##### （2）如何使用TF树
 
 假设我们希望robot2根据robot1的激光数据进行导航，给定TF树，见图4-图5。
 
-![4_How To Use the TF Tree](./images/4_How To Use the TF Tree.png)
+<div align=center><img width="640" src="./images/4_How To Use the TF Tree.png"/></div>
+<div align=center>图4 如何使用TF</div>
 
-<center>图4 如何使用TF</center>
-![5_Inverse_Forward_Transform](./images/5_Inverse_Forward_Transform.png)
+<div align=center><img width="640" src="./images/5_Inverse_Forward_Transform.png"/></div>
+<div align=center>图5 Inverse Transform and Forward Transform</div>
 
-<center>图5 Inverse Transform and Forward Transform</center>
 **TF Demo**。根据如下命令，启动turtle_tf_demo：
 
 ```bash
