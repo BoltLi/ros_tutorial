@@ -253,53 +253,7 @@ $ rosrun tf tf_echo /world /turtle1
 <div align=center>图12 检查结果</div>
 ##### （7）监听TF变换
 
-TF监听器接收并缓存在系统中广播的所有坐标系，并查询坐标系之间的指定变换，接下来我们将创建一个TF监听器，它将监听来自TF广播器的变换，使用以下代码将tf_listener.cpp添加到`lecture1-6/src`中:
-
-```c++
-#include <ros/ros.h>
-#include <tf/transform_listener.h>
-#include <turtlesim/Spawn.h>
-#include <geometry_msgs/Twist.h>
-
-int main(int argc, char** argv){
-    ros::init(argc, argv, "tf_listener");
-
-    ros::NodeHandle node;
-
-    ros::service::waitForService("spawn");
-    ros::ServiceClient add_turtle =
-       node.serviceClient<turtlesim::Spawn>("spawn");
-    turtlesim::Spawn srv;
-    add_turtle.call(srv);
-
-    ros::Publisher turtle_vel =
-       node.advertise<geometry_msgs::Twist>("turtle2/cmd_vel", 10);
-
-    tf::TransformListener listener;
-    ros::Rate rate(10.0);
-
-    while (node.ok()){
-        tf::StampedTransform transform;
-        try {
-            listener.waitForTransform("/turtle2", "/turtle1", ros::Time(0), ros::Duration(10.0) );
-            listener.lookupTransform("/turtle2", "/turtle1", ros::Time(0), transform);
-        } catch (tf::TransformException &ex) {
-            ROS_ERROR("%s",ex.what());
-        }
-
-        geometry_msgs::Twist vel_msg;
-        vel_msg.angular.z = 4 * atan2(transform.getOrigin().y(),
-                                     transform.getOrigin().x());
-        vel_msg.linear.x = 0.5 * sqrt(pow(transform.getOrigin().x(), 2) +
-                                      pow(transform.getOrigin().y(), 2));
-
-        turtle_vel.publish(vel_msg);
-
-        rate.sleep();
-    }
-    return 0;
-};
-```
+TF监听器接收并缓存在系统中广播的所有坐标系，并查询坐标系之间的指定变换，接下来我们将创建一个TF监听器，它将监听来自TF广播器的变换，代码见[tf_listener.cpp](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-6/src/tf_listener.cpp)。
 
 **代码简述**，要使用TransformListener，我们需要包含tf / transform_listener.h头文件；一旦创建了监听器，它就开始接收变换，并缓存最近10秒钟的变换信息；TransformListener对象应限定为持久化，否则其缓存将无法填充，几乎每个查询都将失败；一种常见的方法是使TransformListener对象成为类的成员变量。
 
@@ -398,7 +352,7 @@ Launch 文件
 export ROBOT_INITIAL_POSE="-x -1 -y -2"
 ```
 
-要使机器人处于其自己坐标系中的位置（即，相对于其在地图上的起始位置），创建一个从/map坐标系到/base_footprint坐标系的监听器，代码如下：
+要使机器人处于其自己坐标系中的位置（即，相对于其在地图上的起始位置），创建一个从/map坐标系到/base_footprint坐标系的监听器，完整代码见[robot_location.cpp](https://github.com/LinHuican/ros_tutorial/blob/master/lecture1-6/src/robot_location.cpp)。
 
 ```c++
 #include <ros/ros.h>
