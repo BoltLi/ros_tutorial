@@ -6,13 +6,13 @@
 #include "sensor_msgs/LaserScan.h"
 #include <cmath>
 
-class turn_right: public Behavior {
+class TurnRight: public Behavior {
 public:
-    turn_right();
+    TurnRight();
     virtual bool startCond();
     virtual void action();
     virtual bool stopCond();
-    virtual ~turn_right();
+    virtual ~TurnRight();
 private:
     double TURN_SPEED_MPS = 1.0;
     double MIN_SCAN_ANGLE_RAD = 0;
