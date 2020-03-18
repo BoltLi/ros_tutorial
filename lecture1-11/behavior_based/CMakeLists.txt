@@ -135,11 +135,11 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/behavior_based_node.cpp)
-add_executable(behavior_based_wanderer
+add_executable(behavior_based_wander
   src/Run.cpp
   src/ObstacleAvoidPlan.cpp
   src/Manager.cpp
-  src/Behavior.cpp  src/MoveForward.cpp  src/Plan.cpp src/TurnLeft.cpp src/turn_right.cpp
+  src/Behavior.cpp  src/MoveForward.cpp  src/Plan.cpp src/TurnLeft.cpp src/TurnRight.cpp
 )
 
 ## Rename C++ executable without prefix
@@ -153,7 +153,7 @@ add_executable(behavior_based_wanderer
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(behavior_based_wanderer
+ target_link_libraries(behavior_based_wander
    ${catkin_LIBRARIES}
  )
 
